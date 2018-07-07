@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.hmw.geeknewsapp.MainActivity">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/view_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
