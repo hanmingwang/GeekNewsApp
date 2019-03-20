@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hmw.geeknewsapp.di.component.DaggerFragmentComponent;
+import com.hmw.geeknewsapp.di.component.FragmentComponent;
+import com.hmw.geeknewsapp.di.module.FragmentModule;
 import com.hmw.geeknewsapp.utils.SnackbarUtil;
 
 import javax.inject.Inject;
@@ -62,4 +65,15 @@ public abstract class BaseFragment<T extends BasePresenter> extends SimpleFragme
     }
 
     protected abstract void initInject();
+
+    protected FragmentComponent getFragmentComponent(){
+        return DaggerFragmentComponent.builder()
+                .appComponent(BaseApplication.getAppComponent())
+                .fragmentModule(getFragmentModule())
+                .build();
+    }
+
+    protected FragmentModule getFragmentModule(){
+        return new FragmentModule(this);
+    }
 }

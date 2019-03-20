@@ -3,6 +3,9 @@ package com.hmw.geeknewsapp.base;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.ViewGroup;
 
+import com.hmw.geeknewsapp.di.component.ActivityComponent;
+import com.hmw.geeknewsapp.di.component.DaggerActivityComponent;
+import com.hmw.geeknewsapp.di.module.ActivityModule;
 import com.hmw.geeknewsapp.utils.SnackbarUtil;
 
 /**
@@ -66,13 +69,24 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
 
     }
 
-    @Override
-    protected int getLayout() {
-        return 0;
+//    @Override
+//    protected int getLayout() {
+//        return 0;
+//    }
+//
+//    @Override
+//    protected void initEventAndData() {
+//
+//    }
+
+    protected ActivityComponent getActivityComponent(){
+        return  DaggerActivityComponent.builder()
+                .appComponent(BaseApplication.getAppComponent())
+                .activityModule(getActivityModule())
+                .build();
     }
 
-    @Override
-    protected void initEventAndData() {
-
+    protected ActivityModule getActivityModule(){
+        return new ActivityModule(this);
     }
 }

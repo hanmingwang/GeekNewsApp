@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\work\AndroidProjects\GeekNewsApp.git\GeekNewsApp.iml" filepath="D:\work\AndroidProjects\GeekNewsApp.git\GeekNewsApp.iml" />
+      <module fileurl="file://D:/work/AndroidProjects/GeekNewsApp.git/GeekNewsApp.iml" filepath="D:/work/AndroidProjects/GeekNewsApp.git/GeekNewsApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GeekNewsApp.git.iml" filepath="$PROJECT_DIR$/GeekNewsApp.git.iml" />
       <module fileurl="file://$PROJECT_DIR$/GeekNewsApp.git.iml" filepath="$PROJECT_DIR$/GeekNewsApp.git.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

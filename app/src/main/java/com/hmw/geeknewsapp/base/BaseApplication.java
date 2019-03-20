@@ -9,6 +9,11 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.hmw.geeknewsapp.di.component.AppComponent;
+import com.hmw.geeknewsapp.di.component.DaggerAppComponent;
+import com.hmw.geeknewsapp.di.module.AppModule;
+import com.hmw.geeknewsapp.di.module.HttpModule;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,6 +26,7 @@ import io.realm.Realm;
 public class BaseApplication extends Application {
 
     private static BaseApplication instance;
+    private static AppComponent appComponent;
     private Set<Activity> allActivities;
 
     public static int SCREEN_WIDTH = -1;
@@ -97,6 +103,16 @@ public class BaseApplication extends Application {
             SCREEN_HEIGHT = SCREEN_WIDTH;
             SCREEN_WIDTH = t;
         }
+    }
+
+    public static AppComponent getAppComponent(){
+        if (appComponent == null) {
+            appComponent = DaggerAppComponent.builder()
+                    .appModule(new AppModule(instance))
+                    .httpModule(new HttpModule())
+                    .build();
+        }
+        return appComponent;
     }
 
 }

@@ -8,6 +8,10 @@ import android.util.Log;
 import com.github.moduth.blockcanary.BlockCanary;
 import com.hmw.geeknewsapp.config.Constants;
 import com.hmw.geeknewsapp.utils.SystemUtil;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.FormatStrategy;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.PrettyFormatStrategy;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
@@ -50,6 +54,15 @@ public class BaseService extends IntentService {
     private void initApplication() {
         //初始化日志
 //        Logger.init(getPackageName()).hideThreadInfo();
+        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
+                .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true
+                .methodCount(1)         // (Optional) How many method line to show. Default 2
+                .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
+                .logStrategy(new CustomLogCatStrategy()) // (Optional) Changes the log strategy to print out. Default LogCat
+                .tag("yonbor605")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+                .build();
+        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
+
 
         //初始化错误收集
 //        CrashHandler.init(new CrashHandler(getApplicationContext()));
