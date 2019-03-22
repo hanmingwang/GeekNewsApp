@@ -8,6 +8,8 @@ import com.hmw.geeknewsapp.di.component.DaggerActivityComponent;
 import com.hmw.geeknewsapp.di.module.ActivityModule;
 import com.hmw.geeknewsapp.utils.SnackbarUtil;
 
+import javax.inject.Inject;
+
 /**
  * Created by han on 2018/7/5.
  * MVP activity基类
@@ -15,6 +17,7 @@ import com.hmw.geeknewsapp.utils.SnackbarUtil;
 
 public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivity implements BaseView {
 
+    @Inject
     protected T mPresenter;
 
     @Override

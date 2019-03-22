@@ -2,6 +2,8 @@ package com.hmw.geeknewsapp.di.module;
 
 import com.hmw.geeknewsapp.BuildConfig;
 import com.hmw.geeknewsapp.config.Constants;
+import com.hmw.geeknewsapp.di.qualifier.ZhihuUrl;
+import com.hmw.geeknewsapp.model.http.api.ZhihuApis;
 import com.hmw.geeknewsapp.utils.SystemUtil;
 
 import java.io.File;
@@ -108,5 +110,12 @@ public class HttpModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    @Singleton
+    @Provides
+    @ZhihuUrl
+    Retrofit provideZhihuRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, ZhihuApis.HOST);
     }
 }
