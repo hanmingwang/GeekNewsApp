@@ -10,7 +10,6 @@ import com.hmw.geeknewsapp.model.prefs.ImplPreferencesHelper;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import dagger.Module;
 
 @Singleton
 @Component(modules = {AppModule.class, HttpModule.class})

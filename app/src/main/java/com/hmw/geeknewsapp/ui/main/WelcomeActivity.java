@@ -1,7 +1,6 @@
 package com.hmw.geeknewsapp.ui.main;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +14,6 @@ import com.hmw.geeknewsapp.ui.main.contract.WelcomeContract;
 import com.hmw.geeknewsapp.ui.main.presenter.WelcomePresenter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements WelcomeContract.View {
     @BindView(R.id.iv_welcome_bg)

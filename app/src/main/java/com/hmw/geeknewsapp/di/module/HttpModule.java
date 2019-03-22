@@ -118,4 +118,10 @@ public class HttpModule {
     Retrofit provideZhihuRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, ZhihuApis.HOST);
     }
+
+    @Singleton
+    @Provides
+    ZhihuApis provideZhihuService(@ZhihuUrl Retrofit retrofit) {
+        return retrofit.create(ZhihuApis.class);
+    }
 }
