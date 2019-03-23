@@ -30,7 +30,7 @@
             android:launchMode="singleTop"
             android:theme="@style/MainTheme"
             android:screenOrientation="portrait"/>
-
+        <service android:name=".component.UpdateService"/>
     </application>
 
 </manifest>

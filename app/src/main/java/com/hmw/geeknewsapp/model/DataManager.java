@@ -1,7 +1,9 @@
 package com.hmw.geeknewsapp.model;
 
 import com.hmw.geeknewsapp.model.http.HttpHelper;
+import com.hmw.geeknewsapp.model.http.response.MyHttpResponse;
 import com.hmw.geeknewsapp.model.prefs.PreferencesHelper;
+import com.hmw.geeknewsapp.ui.main.bean.VersionBean;
 import com.hmw.geeknewsapp.ui.main.bean.WelcomeBean;
 
 import io.reactivex.Flowable;
@@ -19,6 +21,11 @@ public class DataManager implements HttpHelper, PreferencesHelper {
     @Override
     public Flowable<WelcomeBean> fetchWelcomeInfo(String res) {
         return mHttpHelper.fetchWelcomeInfo(res);
+    }
+
+    @Override
+    public Flowable<MyHttpResponse<VersionBean>> fetchVersionInfo() {
+        return mHttpHelper.fetchVersionInfo();
     }
 
     @Override

@@ -2,7 +2,9 @@ package com.hmw.geeknewsapp.di.module;
 
 import com.hmw.geeknewsapp.BuildConfig;
 import com.hmw.geeknewsapp.config.Constants;
+import com.hmw.geeknewsapp.di.qualifier.MyUrl;
 import com.hmw.geeknewsapp.di.qualifier.ZhihuUrl;
+import com.hmw.geeknewsapp.model.http.api.MyApis;
 import com.hmw.geeknewsapp.model.http.api.ZhihuApis;
 import com.hmw.geeknewsapp.utils.SystemUtil;
 
@@ -123,5 +125,18 @@ public class HttpModule {
     @Provides
     ZhihuApis provideZhihuService(@ZhihuUrl Retrofit retrofit) {
         return retrofit.create(ZhihuApis.class);
+    }
+
+    @Singleton
+    @Provides
+    @MyUrl
+    Retrofit provideMyRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, MyApis.HOST);
+    }
+
+    @Singleton
+    @Provides
+    MyApis provideMyService(@MyUrl Retrofit retrofit) {
+        return retrofit.create(MyApis.class);
     }
 }
